@@ -1,0 +1,36 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "patchwright"
+version = "0.1.0"
+description = "Natural-language MiRack/VCV Rack 0.6 patch generator"
+requires-python = ">=3.11"
+dependencies = [
+    "anthropic>=0.40",
+    "pydantic>=2",
+    "networkx>=3",
+    "click>=8",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8",
+    "ruff>=0.6",
+    "mypy>=1.10",
+]
+
+[project.scripts]
+patchwright = "patchwright.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["patchwright"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.mypy]
+strict = true
+python_version = "3.11"
